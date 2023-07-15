@@ -1,0 +1,20 @@
+
+
+
+
+.contenedor_allCards{
+    /* display: grid;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 100px 50px;
+    padding: 50px 100px 50px 100px;
+    margin-top: 3rem;
+    margin-bottom: 10rem;
+}

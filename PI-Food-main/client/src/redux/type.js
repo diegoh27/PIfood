@@ -1,0 +1,10 @@
+export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
+export const GET_ALL = "GET_ALL";
+export const API_OR_DB = "API_OR_DB";
+export const FILTER_DIETS = "FILTER_DIETS";
+export const ORDER = "ORDER";
+export const ORDER_HEALTH = "ORDER_HEALTH";
+export const RESET_FILTER = "RESET_FILTER";
+export const ORDER_PRICE = "ORDER_PRICE";
+export const ORDER_TIME = "ORDER_TIME";
+export const PAGINATE = "PAGINATE";

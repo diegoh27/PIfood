@@ -28,16 +28,16 @@ const getApiDiets = async () => {
       
       
      // manera create individidual
-      // const createDiet = setDiets.map((diet) => 
-      //    Diet.create({
-      //     name: diet
-      //   })
-      // )
+      const createDiet = setDiets.map((diet) => 
+         Diet.create({
+          name: diet
+        })
+      )
 
-      // const promise = Promise.all(createDiet)
+      const promise = Promise.all(createDiet)
      
       
-      // return promise
+      return promise
       
       
     // bulkcreate

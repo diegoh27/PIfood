@@ -21,16 +21,12 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    servings: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     healthScore: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     summary: {
@@ -38,7 +34,7 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     steps:{
-      type: DataTypes.STRING
+      type: DataTypes.ARRAY(DataTypes.STRING)
     },
     db: {
       type: DataTypes.BOOLEAN,

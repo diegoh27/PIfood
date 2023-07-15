@@ -1,0 +1,18 @@
+.body_home{
+    background: linear-gradient(45deg,#00bcd4, #ffeb3b);
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; */
+   
+    
+}
+
+.sidebar {
+    display: block;
+}
+
+.boton_home{
+    pointer-events: none;
+    opacity: 0.5;
+}

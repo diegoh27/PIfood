@@ -1,0 +1,7 @@
+
+
+.boton_disable{
+    pointer-events: none;
+    opacity: 0.5;
+}
+

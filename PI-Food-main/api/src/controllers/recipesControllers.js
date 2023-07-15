@@ -17,17 +17,19 @@ const urlAll = `${URL}${KEY}`
 // controlador para traernos todas las recetas de la api
 const getAllRecipeApi = async () => {
         const recipeApi = (await axios.get(urlAll)).data.results
+        
         const newRecipeApi = recipeApi.map(recipe => {
             return { 
                 id: recipe.id,
                 name: recipe.title,
                 image: recipe.image,
-                diets: recipe.diets.map((d)=> {return{name:d}}),
-                summary: recipe.summary,
+                pricePerServing: recipe.pricePerServing,
+                readyInMinutes: recipe.readyInMinutes,
+                Diets: recipe.diets.map((d)=> {return{name:d}}),
+                summary: recipe.summary.replace(/<\/?[^>]+(>|$)/g, ""),
                 healthScore: recipe.healthScore,
-                diets: recipe.diets,
                 steps: recipe.analyzedInstructions[0]?.steps.map(step => {
-                    return `paso numero: ${step.number} - ${step.step}`
+                    return {number: step.number, step: step.step }
                 })
             }
         })
@@ -62,7 +64,7 @@ const getAllRecipes = async (name) => {
     recipe.name.toLowerCase().includes(name.toLowerCase()))
     // verificamos si se hizo match en la busqueda del nombre
         if(!filterRecipes.length) {
-            throw new Error("No se encontraron recetas con ese nombre")
+            throw new Error("Error 404 no se encontraron recetas con ese nombre")
         } else {
             return filterRecipes;
         }
@@ -72,6 +74,9 @@ const getAllRecipes = async (name) => {
 }
 
 const getRecipeById = async (idRecipe) => {
+   
+   
+    
     if(isNaN(idRecipe)) {
         const findDb = await Recipe.findByPk(idRecipe, {
             include: [{
@@ -96,7 +101,7 @@ const getRecipeById = async (idRecipe) => {
     return findRecipeId;
 }
 
-const postRecipe = async ({name, healthScore, image, summary, steps, diets, pricePerServing, readyInMinutes, servings}) => {
+const postRecipe = async ({name, healthScore, image, summary, steps, diets, pricePerServing, readyInMinutes}) => {
     
 
     const verifyExist = await Recipe.findAll({
@@ -107,17 +112,14 @@ const postRecipe = async ({name, healthScore, image, summary, steps, diets, pric
         }
     const newRecipe = await Recipe.create({
         name: name,
-        pricePerServing: pricePerServing,
-        healthScore: healthScore, 
+        pricePerServing: Number(pricePerServing),
+        healthScore: Number(healthScore), 
         image: image, 
         summary: summary, 
-        readyInMinutes: readyInMinutes,
-        servings: servings,
-        steps: steps
+        readyInMinutes: Number(readyInMinutes),
+        steps: [steps]
     });
     await newRecipe.addDiet(diets)
-    
-    
     
     return newRecipe;
 } 
