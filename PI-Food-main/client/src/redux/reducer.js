@@ -8,7 +8,8 @@ import {
     ORDER,
     ORDER_TIME,
     ORDER_PRICE,
-    PAGINATE
+    DELETE,
+    CLEAR,
 } from './type';
 
 
@@ -16,7 +17,6 @@ import {
 const initialState = {
     recipesR: [],
     allRecipes: [],
-    currentPage: 0,
     recipesP: [],
     prueba: []
 };
@@ -33,17 +33,19 @@ const reducer = (state = initialState, action) => {
             };
 
         case SEARCH_BY_NAME:
-            if(payload.length){
                 return  {
                     ...state,
-                    recipesR:payload
-               } 
-        };
+                    recipesR:payload,
+                    prueba: payload
+            };
 
         case FILTER_DIETS: 
         let filterDiets = state.allRecipes.filter((recipe) => 
-            recipe.Diets.some(diet => diet.name === payload)
-        );
+            recipe.Diets.find(diet => diet.name === payload)
+            );
+            if(filterDiets.length === 0){
+                filterDiets = ['Not found']
+            }
             return {
                 ...state,
                 recipesR: filterDiets
@@ -58,6 +60,13 @@ const reducer = (state = initialState, action) => {
         let filterApi = state.allRecipes.filter((recipe) => {
             return recipe?.db !== true 
         });
+
+        if(filterDB.length === 0 ){
+            filterDB = ['Error']
+        }
+        if(filterApi.length === 0 ){
+            filterDB = ['Error']
+        }
 
             if(payload === "General") return {
             ...state,
@@ -78,9 +87,9 @@ const reducer = (state = initialState, action) => {
             ...state, 
             recipesR:
             payload === "Ascendente" ?
-            copyAllRecipes.sort((a,b) => { return a.name.localeCompare(b.name)})
+            copyAllRecipes.sort((a,b) => { return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })})
             :
-            copyAllRecipes.sort((a,b) => { return b.name.localeCompare(a.name)})
+            copyAllRecipes.sort((a,b) => { return b.name.localeCompare(a.name, undefined, { sensitivity: 'base' })})
         }
 
        case ORDER_HEALTH: 
@@ -119,11 +128,32 @@ const reducer = (state = initialState, action) => {
 
         }
 
-        case PAGINATE: 
-            const itemsPerPage = 9;
-            const nextPage = state.currentPage + 1;
-            const prevPage = state.currentPage - 1;
-            const firtsIndex = payload === "Next" ? nextPage * itemsPerPage : prevPage * itemsPerPage;
+
+        case DELETE: 
+        let deleteRecipes = state.allRecipes.filter((recipe) => {
+            return recipe.id !== payload
+        })
+
+        return  {
+            ...state,
+            recipesR: deleteRecipes,
+            // recipesP: deleteRecipes,
+            allRecipes: deleteRecipes
+        }
+
+
+        case CLEAR: 
+        return {
+            ...state,
+            prueba: [],
+            recipesR: [],
+        }
+
+        // case PAGINATE: 
+        //     const itemsPerPage = 9;
+        //     const nextPage = state.currentPage + 1;
+        //     const prevPage = state.currentPage - 1;
+        //     const firtsIndex = payload === "Next" ? nextPage * itemsPerPage : prevPage * itemsPerPage;
 
             
 
@@ -139,6 +169,7 @@ const reducer = (state = initialState, action) => {
             ...state
         };
     };
+    
 };
 
 export default reducer;

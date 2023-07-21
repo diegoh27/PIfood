@@ -8,3 +8,6 @@ export const RESET_FILTER = "RESET_FILTER";
 export const ORDER_PRICE = "ORDER_PRICE";
 export const ORDER_TIME = "ORDER_TIME";
 export const PAGINATE = "PAGINATE";
+export const DELETE = 'DELETE';
+export const CLEAR = 'CLEAR';
+export const ACTUAL_STATE = 'ACTUAL_STATE';

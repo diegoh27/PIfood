@@ -1,12 +1,13 @@
 import './Card.css'
 import { useNavigate} from 'react-router-dom'
 import { useDispatch } from 'react-redux';
-import { filterDiets } from '../../redux/actions';
+import { filterDiets, deleteOnDbRedux, filterDbOrApi, getAll} from '../../redux/actions';
 
 
 
 
-const Card = ({recipe, paginado}) => {
+
+const Card = ({recipe, paginado, deleteDb}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -22,12 +23,24 @@ const Card = ({recipe, paginado}) => {
         dispatch(filterDiets(diet))
         paginado(1)
     }
+
+    const deleteOnDb = (id) => {
+        deleteDb(id)
+        dispatch(deleteOnDbRedux(id))
+    }
+
+    const filterCreate = (input) => {
+        dispatch(filterDbOrApi(input))
+        paginado(1)
+    }
+
     return (
 
         
         
         <div>
-            <div className="card_container" style={{ "--clr": "#009688" }} key={recipe.id}>
+            {
+                recipe.name ? <div className="card_container" style={{ "--clr": "#009688" }} key={recipe.id}>
                     
               
 
@@ -40,7 +53,7 @@ const Card = ({recipe, paginado}) => {
                     <h3 onClick={detailHandler}>{recipe?.name}</h3>
                     
                     {
-                    recipe.create ? <p>Create</p> : null
+                    recipe.create ? <p onClick={()=>{filterCreate("Create")}}>Create</p> : null
                     }
                
                 <h2 onClick={dietsHandler} className='dietas_title' style={{ "--clr": "#ff3e7f" }}> Diets </h2>
@@ -52,9 +65,16 @@ const Card = ({recipe, paginado}) => {
                      }
                     </div>
                     <a onClick={detailHandler}>More Info</a>
+                    <br />
+                    {
+                        recipe.create ? <a onClick={() => {deleteOnDb(recipe.id)}} className='delete-boton'>Delete</a> : null
+                    }
+                   
                 </div>
 
-            </div>
+            </div> : null
+            }
+            
         </div>
  
     )

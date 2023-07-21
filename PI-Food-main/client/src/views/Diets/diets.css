@@ -1,0 +1,89 @@
+
+.diets-title-container{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.container-all-diets {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 3rem 5rem;
+    
+}
+
+.container-all-info{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+
+
+.container-info{
+  
+    justify-content: center;
+    text-align: center;
+    width: 30rem;
+    height: 30rem;
+    background: rgba(188, 108, 37, 0.3);
+    box-shadow: 5px 7px 10px rgba(0, 0, 0, 1) ;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: 3s;
+    transition-property: img;
+}
+
+.container-info h2{
+    color: #000 ;
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 60px;
+    padding: 1rem 2rem;
+}
+
+.container-info img{
+display: block;
+width: 70%;
+height: 70%;
+margin: 0 auto;
+margin-top: 3rem;
+
+border-radius: 10px;
+border: solid rgba(0, 0, 0, 1) 3px;
+box-shadow: 10px 10px 10px rgba(0, 0, 0, 1) ;
+
+}
+
+
+
+
+.container-info:hover {
+    overflow: visible;
+    margin-bottom: 5rem;
+    transition: 1s;
+    margin-bottom: 5rem;
+    margin-bottom: 10rem;
+    width: 35rem;
+    height: 35rem;
+}
+
+.container-info:hover  img{
+    overflow: visible;
+    transform: scale(1.1);
+    transition: 1s;
+    
+}
+
+
+
+
+
+.container-info p{
+    font-size: 15px;
+    font-weight: 500;
+    color: #fcf6bd;
+}

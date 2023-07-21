@@ -21,11 +21,16 @@ module.exports = (sequelize) => {
             'paleolithic',
             'fodmap friendly',
             'primal',
-            'paleo',
+            'Vegetarian',
             'whole 30'
         ),
         allowNull: false,
     },
+    db: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+      
+    }
 
   }, {freezeTableName: true, timestamps: false});
 };

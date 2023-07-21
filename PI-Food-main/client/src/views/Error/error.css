@@ -1,0 +1,42 @@
+.section_error{
+    min-height: 100vh;
+    background-image: url('../../utils/fondoError.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.content-error{
+  text-align: center;
+  padding: 3rem;
+}
+
+.title-error{
+    font-size: 10rem;
+    color: #e63946;
+}
+
+.content-error div h3 {
+    font-size: 5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+}
+
+.content-error div p {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.content-error div a {
+    width: 8rem;
+    background: #e63946;
+    text-decoration: none;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 2px;
+   
+}

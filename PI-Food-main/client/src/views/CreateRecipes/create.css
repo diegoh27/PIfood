@@ -1,5 +1,166 @@
 
 
+  
+  .danger {
+    
+    color: #000;
+    margin: 0 auto;
+    background: rgba(249, 87, 56, 1);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 2px 3px;
+  }
+
+
+.section_create {
+    display: flex;
+    height: 100vh;
+    
+    align-items: center;
+    justify-content: center;
+   
+}
+
+.container_create{
+    background:  rgba(188, 108, 37, 0.3);
+    box-shadow: 5px 7px 10px rgba(0, 0, 0, 1) ;
+    max-width: 700px;
+    width: 100%;
+    height: 44rem;
+    padding: 2rem 2.5rem;
+    border-radius: 5px;
+}
+
+
+.diets-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    
+    list-style: disc;
+}
+
+.diets-form select {
+    /* -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none; */
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    border-radius: 3rem;
+    width: 5rem;
+    padding: 0.5rem;
+    background: #009688;
+    background-image: none;
+    color: #bc6c25;
+    cursor: pointer;
+}
+
+.diets-form select{
+    position: relative;
+    display: flex;
+    width: 5.8rem;
+    height: 2rem;
+    line-height: 1;
+    background: #faedcd;
+   
+}
+
+.diets-form select{
+    flex: 1;
+    padding: 0 0.5rem;
+    color: #bc6c25;
+    cursor: pointer;
+   
+}
+
+
+
+.diets-form{
+    margin-top: -28px;
+}
+
+.container_create .title_form {
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+    text-transform: uppercase;
+    color: #ffecd1;
+
+}
+
+.container_create .container_title::before{
+    content: '' ;
+    position: absolute;
+    height: 3px;
+    width: 30px;
+}
+
+.container_create form .detail_form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+form .detail_form .input-box{
+    margin: 20px 0px 12px 0;
+    width: calc(100% / 2 - 20px);
+}
+
+.detail_form .input-box .input-detail{
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #ffecd1;
+    
+}
+
+form .detail_form input{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+}
+
+form .detail_form input:hover{
+  outline: 0px;
+  border-bottom: 3px solid rgb(255, 255, 255);
+  transition: border-bottom 0.7s;
+}
+
+form .detail_form textarea{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+}
+
+form .boton-form{
+    width: 100%;
+    text-align: center;
+    background: rgba(188, 108, 37, 1);
+    border: solid black 1px;
+    border-radius: 3px;
+    box-shadow: 5px 7px 10px rgba(0, 0, 0, 1);
+    cursor: pointer;
+    color: #ffecd1;
+}
+
+
+
+
+.warning {
+    border: solid red 4px;
+    border-radius: 0.2em;
+   
+  }
+
 .boton_disable{
     pointer-events: none;
     opacity: 0.5;

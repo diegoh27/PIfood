@@ -43,7 +43,7 @@ const getAllRecipesOnDb = async () => {
     const recipesDb = await Recipe.findAll({
         include: {
           model: Diet,
-          attributes: ["name"],
+        //   attributes: ["name"],
           through: {
             attributes: [],
           }
@@ -79,10 +79,12 @@ const getRecipeById = async (idRecipe) => {
     
     if(isNaN(idRecipe)) {
         const findDb = await Recipe.findByPk(idRecipe, {
-            include: [{
+            include: {
                 model: Diet,
-                through: {attributes: []}
-            }]
+                through: {
+                    attributes: []
+                }
+            }
         }) 
         if(findDb){
             return findDb;
@@ -117,13 +119,22 @@ const postRecipe = async ({name, healthScore, image, summary, steps, diets, pric
         image: image, 
         summary: summary, 
         readyInMinutes: Number(readyInMinutes),
-        steps: [steps]
+        // steps: [steps]
+        steps: steps.split('\n')
     });
     await newRecipe.addDiet(diets)
     
     return newRecipe;
-} 
+};
 
+
+const deleteRecipeOnDb = async (id) => {
+    
+    
+    await Recipe.destroy({
+        where: {id}
+    }) 
+}
 
 
 
@@ -137,5 +148,6 @@ module.exports = {
     postRecipe,
     getAllRecipesOnDb,
     getAllRecipes, 
-    getRecipeById
+    getRecipeById,
+    deleteRecipeOnDb
 }

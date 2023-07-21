@@ -8,7 +8,8 @@ import {
     ORDER,
     ORDER_TIME,
     ORDER_PRICE,
-    PAGINATE 
+    DELETE,
+    CLEAR,  
 } from './type'
 import axios from 'axios'
 
@@ -38,7 +39,11 @@ export const getByName = (input) => {
                 payload: data
             });
         } catch (error) {
-            alert(error.response.data.error)
+           return dispatch({
+            type: SEARCH_BY_NAME,
+            payload: [error.response.data.error]
+           })
+        
         };
 };
 };
@@ -97,14 +102,26 @@ export const orderTime = (time) => {
     };
 };
 
-export const paginate = (orden) => {
-     return async (dispatch) => {
+
+export const deleteOnDbRedux = (id) => {
+    return async (dispatch) => {
         return await dispatch({
-            type: PAGINATE,
-            payload: orden
+            type: DELETE,
+            payload: id
         })
     }
-};
+}
+
+export const clearState = () => {
+    return async (dispatch) => {
+        return await dispatch({
+            type: CLEAR
+        })
+    }
+}
+
+
+
 
 
 

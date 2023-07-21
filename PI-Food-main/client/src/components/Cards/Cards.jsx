@@ -1,9 +1,9 @@
 import Card from '../Card/Card'
 import './Cards.css'
 
-const Cards = ({recipes, paginado}) => {
+const Cards = ({recipes, paginado, deleteDb}) => {
     return (
-    <body className='body_cards'>
+    <div>
         
     
         <div>
@@ -12,12 +12,12 @@ const Cards = ({recipes, paginado}) => {
    
         {
             recipes?.map((recipe, index) => {
-                return <Card key={index} recipe={recipe} paginado={paginado}/>
+                return <Card key={index} recipe={recipe} paginado={paginado} deleteDb={deleteDb}/>
             })
         }
             </div>
                 </div>
-    </body>
+    </div>
     )
 }
 

@@ -18,30 +18,41 @@ const getApiDiets = async () => {
       // formateamos la data para que no se repitan las dietas
       const setDiets = [...new Set(dietsData)];
      
+      const allDiets = setDiets.concat(['Vegetarian'])
      
       
       
       // manera bulkCreate 
-      const transformedData = setDiets.map((diet) => ({
+      const transformedData = allDiets.map((diet) => ({
         name: diet,
       }));
+
+      // console.log(transformedData);
+      
       
       
      // manera create individidual
-      const createDiet = setDiets.map((diet) => 
-         Diet.create({
-          name: diet
-        })
-      )
+      // const createDiet = setDiets.map((diet) => 
+      //    Diet.create({
+      //     name: diet
+      //   })
+      //   )
 
-      const promise = Promise.all(createDiet)
+       
+    
+        
+  
+      
+     
+      // const promise = Promise.all([...createDiet, response])
      
       
-      return promise
+      // return promise
       
       
     // bulkcreate
      const response = await Diet.bulkCreate(transformedData);
+        
      return response;
      
     } catch (error) {
@@ -52,7 +63,7 @@ const getApiDiets = async () => {
 
 
 
- 
+
 
  
   

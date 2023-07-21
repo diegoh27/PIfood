@@ -19,8 +19,18 @@ const getDietsHandler = async (req, res) => {
     }
 }
 
+const postDietHandler = async (req, res) => {
+    const { diet } = req.body 
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
 
 
 module.exports = {
-    getDietsHandler
+    getDietsHandler, 
+    postDietHandler
 }

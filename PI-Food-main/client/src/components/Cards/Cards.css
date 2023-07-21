@@ -14,7 +14,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 100px 50px;
-    padding: 50px 100px 50px 100px;
     margin-top: 3rem;
-    margin-bottom: 10rem;
+    padding: 50px 100px ;
+    margin-bottom: 6rem;
 }

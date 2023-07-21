@@ -21,7 +21,7 @@ const Paginado = ({recipesPerPage, recipesR, paginado, currentPage }) => {
     return (
         <div>
             
-            <nav>
+            <nav className='nav_paginate'>
                     
                 <ul>
                     {

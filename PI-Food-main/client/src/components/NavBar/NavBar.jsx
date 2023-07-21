@@ -14,7 +14,7 @@ const navigate = useNavigate();
 
     const redirectionHome =  () => {
         navigate('/home')
-        dispatch( getAll())
+        // dispatch( getAll())
     } 
     const redirectionDiets = () => {
         navigate('/diets')
@@ -30,36 +30,25 @@ const navigate = useNavigate();
     
     return (
         <div>
-            
-            
+            <body className="body_nav">
                 
-            
-                <nav className="header_navBar">
-
-                <img onClick={redirectionHome} className="logo" src={img} alt={img} />
-
+           
+            <header className="header_nav">
                 
-
+                <img src={img} className="logo" onClick={redirectionHome}></img>
+                <div className="menu_toggle"> </div>
+                <nav>
+                    <ul>
+                        <li> <a onClick={redirectionHome} className="active" >Home</a>   </li>
+                        <li> <a onClick={redirectionDiets} >Diets</a> </li>
+                        <li> <a onClick={redirectionCreate}>Create</a></li>
+                    </ul>
+                </nav>
+                <SearchBar paginado={paginado}/>
+                <div className="clearfix"></div>
                 
-                    <div className="group">
-                        <ul className="navigation">
-                            <li><a onClick={redirectionHome}>Home</a></li>
-                            <li><a onClick={redirectionDiets}>Diets</a></li>
-                            <li><a onClick={redirectionCreate}>Create</a> </li>
-                        </ul>
-                    </div>
-                    
-
-                    
-                    
-                        
-                            <SearchBar paginado={paginado}/> 
-                        
-                  
-                    
-            </nav>
-       
-              
+            </header>
+            </body>
         </div>
     )
 }

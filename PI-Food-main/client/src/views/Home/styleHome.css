@@ -1,18 +1,106 @@
-.body_home{
-    background: linear-gradient(45deg,#00bcd4, #ffeb3b);
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; */
-   
+.sideBar {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.5);
+    margin-top: -1.2rem;
+    
     
 }
 
-.sidebar {
-    display: block;
+.sideBar ul {
+    display: flex;
+    position: relative;
+    list-style-type: none;
+
 }
+
+.sideBar ul li div{
+    
+    
+    font-size: 1.15rem;
+    text-decoration: none;
+    text-transform: capitalize;
+    text-align: center;
+    color: #ffdab9;
+    padding: 5px 10px;
+    transition: 0.5s ease;
+    border-radius: 0 30px;
+   
+
+}
+
+.sideBar ul li div:hover{
+    background: rgba(0, 0, 0, 0.7);
+    color: #bc6c25;
+}
+
+.sideBar select{
+    /* -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none; */
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    border-radius: 3rem;
+    width: 5rem;
+    padding: 0.5rem;
+    background: #009688;
+    background-image: none;
+    color: #bc6c25;
+    cursor: pointer;
+
+}
+
+
+.sideBar select{
+    position: relative;
+    display: flex;
+    width: 5.8rem;
+    height: 2rem;
+    line-height: 1;
+    background: #faedcd;
+   
+}
+
+.sideBar select{
+    flex: 1;
+    padding: 0 0.5rem;
+    color: #bc6c25;
+    cursor: pointer;
+   
+}
+
+.paginate_home{
+    
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+   
+}
+
+.boton_paginate{
+    display: block;
+    width: 4rem;
+    height: 2rem;
+    background-color: #bc6c25;
+    padding-top: 0.2rem;
+    text-align: center;
+    border-radius: 5px;
+    color: #fff;
+    margin-left: 3rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+
 
 .boton_home{
     pointer-events: none;
     opacity: 0.5;
 }
+

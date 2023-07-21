@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import NavBar from "../../components/NavBar/NavBar.jsx";
 import validate from './validate.js'
-
+import './create.css'
 import axios from 'axios'
+import { getAll } from "../../redux/actions.js";
 
 
 const CreateRecipe = () => {
+
+    const dispatch = useDispatch()
 
 const [diets, setDiets] = useState([])
 const [form, setForm] = useState({
@@ -19,7 +23,7 @@ const [form, setForm] = useState({
         diets: []
 })
 
-const [error, setError] = useState({})
+const [error, setError] = useState({name: ''})
 
 
 
@@ -63,7 +67,9 @@ const coincidencias = diets.filter(diet => form.diets?.includes(diet.id))
         } else {
                 try {
                 const { data } = await axios.post(`http://localhost:3001/recipes`, form)
-                    alert(`Recipe ${data.name} create success`)
+                alert(`Recipe ${data.name} create success`)
+                dispatch(getAll())
+                
                     
                 } catch (error) {
                         alert(error.response.data.error)
@@ -84,9 +90,9 @@ const coincidencias = diets.filter(diet => form.diets?.includes(diet.id))
         [event.target.name]: event.target.value
        }))
     }
+
+  
  
-    console.log(error)
-    console.log(coincidencias)
     
     
     // ["agua","sal","mariscos"]
@@ -98,12 +104,22 @@ const coincidencias = diets.filter(diet => form.diets?.includes(diet.id))
         
         <div>
             <NavBar />
-            <h1>Cree su receta aqui!!!</h1>
-            <form type="submit" onSubmit={handleSubmit}> 
-            Recipe
-            <br/>
+            <section className="section_create">
+                
+            <div className="container_create">
 
-            <label>Name: </label>
+           
+            <div className="title_form">Write your recipe here</div>
+            <form > 
+            
+            <div className="detail_form">
+                
+
+
+            <div className="input-box">
+         
+            
+            <label className="input-detail">Name: </label>
             <input 
             type="text" 
             name="name"
@@ -112,12 +128,15 @@ const coincidencias = diets.filter(diet => form.diets?.includes(diet.id))
             onChange={handleChange}
             />
             {
-                error.name ? <p>{error.name}</p> : null 
-            }
-            
-            <br/>
 
-            <label>Summary: </label>
+                error.name ? <p className="danger">{error.name} <ion-icon name="warning-outline"></ion-icon></p> : null 
+            }
+            </div>
+            
+           
+
+            <div className="input-box">
+            <label className="input-detail">Summary: </label>
             <input 
             type="text" 
             name="summary"
@@ -125,12 +144,14 @@ const coincidencias = diets.filter(diet => form.diets?.includes(diet.id))
             value={form.summary}
             onChange={handleChange}
             />
-            <br/>
             {
-                error.summary ? <p>{error.summary}</p> : null 
+                error.summary ? <p className="danger">{error.summary} <ion-icon name="warning-outline"></ion-icon></p> : null 
             }
+            </div>
 
-            <label>Health score: </label>
+
+            <div className="input-box"> 
+            <label className="input-detail">Health score: </label>
             <input 
             type="text" 
             name="healthScore"
@@ -138,12 +159,15 @@ const coincidencias = diets.filter(diet => form.diets?.includes(diet.id))
             value={form.healthScore}
             onChange={handleChange}
             />
-            <br/>
+            
             {
-                error.healthScore ? <p>{error.healthScore}</p> : null 
+                error.healthScore ? <p className="danger">{error.healthScore} <ion-icon name="warning-outline"></ion-icon></p> : null 
             }
+            </div> 
 
-            <label>Price per serving: </label>
+
+            <div className="input-box">
+            <label className="input-detail">Price per serving: </label>
             <input 
             type="text" 
             name="pricePerServing"
@@ -151,12 +175,15 @@ const coincidencias = diets.filter(diet => form.diets?.includes(diet.id))
             value={form.pricePerServing}
             onChange={handleChange}
             />
-            <br/>
+            
             {
-                error.pricePerServing ? <p>{error.pricePerServing}</p> : null 
+                error.pricePerServing ? <p className="danger">{error.pricePerServing} <ion-icon name="warning-outline"></ion-icon></p> : null 
             }
+             </div>
 
-            <label>Ready in minutes: </label>
+
+             <div className="input-box">
+            <label className="input-detail">Ready in minutes: </label>
             <input 
             type="text" 
             name="readyInMinutes"
@@ -164,42 +191,53 @@ const coincidencias = diets.filter(diet => form.diets?.includes(diet.id))
             value={form.readyInMinutes}
             onChange={handleChange}
             />
-            <br/>
+        
             {
-                error.readyInMinutes ? <p>{error.readyInMinutes}</p> : null 
+                error.readyInMinutes ? <p className="danger">{error.readyInMinutes} <ion-icon name="warning-outline"></ion-icon></p> : null 
             }
+            </div>
 
-            <label>Steps: </label>
-            <input 
+            <div className="input-box">
+            <label className="input-detail">Steps: </label>
+            <textarea  
             type="text" 
             name="steps"
             placeholder="Steps..."
             value={form.steps}
             onChange={handleChange}
             />
-            <br/>
+          
             {
-                error.steps ? <p>{error.steps}</p> : null 
+                error.steps ? <p className="danger">{error.steps} <ion-icon name="warning-outline"></ion-icon></p> : null 
             }
+            </div>
 
-            <label>Image</label>
+            <div className="input-box">
+            <label className="input-detail">Image</label>
             <input 
             type="text" 
             name="image" 
             placeholder="Url..."
             value={form.image}
-            onChange={handleChange} 
+            onChange={handleChange}
+            className={error.image &&'warning'}
             />
-            <br />
+    
             {
-                error.image ? <p>{error.image}</p> : null 
+                error.image ? <p className="danger">{error.image} <ion-icon name="warning-outline"></ion-icon></p> : null 
             }
+            </div>
             
             
+            <div className="input-box">
 
-            <label >
+                <div className="diets-form">
+
+                
+            <label className="input-detail" >
                 Diets: 
-            <select name="diets" placeholder="Diets" onChange={selectDiet}>
+            <select name="diets" onChange={selectDiet}>
+            <option selected disabled>Diets</option> 
                 {
                     diets?.map((diet) => {
                         return <option  key={diet.id} value={diet.id} name="id">{diet.name}</option>
@@ -207,24 +245,36 @@ const coincidencias = diets.filter(diet => form.diets?.includes(diet.id))
                     })
                 }
             </select>
+                <div className="diets-container">
+
+                
                 {
                     coincidencias?.map((diet, index) => {
-                        return <p key={index}>{diet.name}</p>
+                        return <li key={index}>{diet.name}</li>
                 })
                 } 
+                </div>
+                
+                
                 {
-                    coincidencias.length ? null : <p>{"Diets is required"}</p>
+                    coincidencias.length ? null : <p className="danger">{"Diets is required"} <ion-icon name="warning-outline"></ion-icon></p>
                 }
                  
             </label>
+            </div>
              { 
              Object.values(error).length || !coincidencias.length ? 
-             <button className="boton_disable"  type="submit" >Enviar</button>  
+             <button className="boton_disable boton-form"  type="submit" onClick={handleSubmit}>Enviar</button>  
              : 
-             <button type="submit" >Enviar</button> 
+             <button type="submit" className="boton-form"  onClick={handleSubmit} >Enviar</button> 
              } 
-                
+             </div>
+             
+            </div>    
             </form>
+            </div>
+
+            </section>
         </div>
        
         )
